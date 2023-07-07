@@ -1,10 +1,10 @@
 import "./App.css";
-import KaKaoMap from "./components/KaKaoMap";
 import GpsTest from "./components/GpsTest";
+import KaKaoMap from "./components/KaKaoMap";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <GpsTest />
       <KaKaoMap />
     </div>

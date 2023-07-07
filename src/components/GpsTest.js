@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 // https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API/Using_the_Geolocation_API
 // // HTML5 => Geolocation API
 export default function GpsTest() {
-  const [test, setTest] = useState();
-
   // // gps 사용가능 check 후, geolocation 실행
   function getLocation() {
     if (navigator.geolocation) {
@@ -12,8 +10,8 @@ export default function GpsTest() {
       navigator.geolocation.getCurrentPosition(
         function (position) {
           // 이용 가능하면 geolocation 가져오기
-          let lat = position.coords.latitude; // 위도
-          let lon = position.coords.longitude; // 경도
+          //   let lat = position.coords.latitude; // 위도
+          //   let lon = position.coords.longitude; // 경도
         },
         function (error) {
           if (error.code === 1) {
@@ -29,15 +27,6 @@ export default function GpsTest() {
   }
 
   useEffect(() => {
-    fetch(`/test_location.json`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTest(data.positions);
-        console.log(data.positions);
-      })
-      .catch((error) => {
-        console.error("Error fetching more courses:", error);
-      });
     getLocation();
   }, []);
 
