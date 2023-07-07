@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 // https://developer.mozilla.org/ko/docs/Web/API/Geolocation_API/Using_the_Geolocation_API
 // // HTML5 => Geolocation API
@@ -10,8 +10,9 @@ export default function GpsTest() {
       navigator.geolocation.getCurrentPosition(
         function (position) {
           // 이용 가능하면 geolocation 가져오기
-          //   let lat = position.coords.latitude; // 위도
-          //   let lon = position.coords.longitude; // 경도
+          let lat = position.coords.latitude; // 위도
+          let lon = position.coords.longitude; // 경도
+          console.log(lat, lon);
         },
         function (error) {
           if (error.code === 1) {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const { kakao } = window;
 // 스크립트로 kakao maps api를 심어서 가져오면 window전역 객체에 들어감
@@ -8,7 +8,7 @@ const { kakao } = window;
 
 // 카카오 지도 그리기 ! (현재위치로)
 export default function KaKaoMap() {
-  function getLocation(setLocatin) {
+  function getLocation() {
     if (navigator.geolocation) {
       var options = { timeout: 60000 }; // 시간 제한 두기
       navigator.geolocation.getCurrentPosition(
@@ -110,11 +110,8 @@ export default function KaKaoMap() {
     polyline.setMap(map);
   }
 
-  useEffect(() => {
-    getLocation();
-  }, []);
+  getLocation();
 
-  // return <div id="map" style={{ width: "500px", height: "500px" }}></div>;
   return (
     <div
       style={{
@@ -124,10 +121,8 @@ export default function KaKaoMap() {
         fontSize: "20px",
         fontWeight: "700",
       }}
-      // className="my-5 text-black text-xl sm:text-lg font-bold"
     >
       <p
-        // className="pb-3 border-b-[1px] border-gray"
         style={{
           paddingBottom: "15px",
           borderBottom: "1px solid #d9d9d9",
@@ -138,7 +133,6 @@ export default function KaKaoMap() {
       </p>
       <div
         id="map"
-        // className="w-[500px] h-[270px] bg-gray mt-8 rounded-lg"
         style={{
           width: "400px",
           height: "270px",
